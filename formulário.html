@@ -4,6 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            background-color: #eef1f5;
+            color: #333333;
+            min-height: 100vh;
+        }
+        h1 {
+            background-color: #1a2f45;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 32px;
+            letter-spacing: 3px;
+        }
+        h2 {
+            text-align: center;
+            color: #1a2f45;
+            margin: 40px 30px;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+        form {
+            width: 90%;
+            max-width: 960px;
+            margin: 0 auto 60px auto;
+            background-color: #fff;
+            padding: 50px 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+        fieldset {
+            border: 2px solid #1a2f45;
+            border-radius: 8px;
+            padding: 30px 35px;
+            margin-bottom: 35px;
+        }
+        legend {
+            background-color: #1a2f45;
+            color: #fff;
+            padding: 7px 18px;
+            border-radius: 5px;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+        .campo-grupo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+            margin-bottom: 20px;
+        }
+        .campo {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .campo-inline {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .campo label {
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1a2f45;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        input[type="text"], input[type="email"], input[type="date"] {
+            padding: 10px 14px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 15px;
+            background-color: #fafafa;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        } 
+        .campo input[type="text"], input[type="email"], input[type="date"] {
+            width: 100%;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus {
+            border-color: #1a2f45;
+            box-shadow: 0 0 0 3px rgba(26,47,69,0.1);
+            outline: none;
+            background-color: #fff;
+        }
+        select {
+            padding: 10px 14px;
+            border: 1px solid #cccccc;
+            font-size: 15px;
+            background-color: #fafafa;
+            cursor: pointer;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            border-color: #1a2f45;
+            outline: none;
+        }
+        .table {
+            display: flex;
+            align-items: center;
+            border-spacing: 0;
+        }
+        #submit {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: border-color 0.3s, transform 0.1s;
+        }
+        #submit:hover {
+            background-color: #117f3f;
+            transition: all 0.3s;
+        }
+        #submit:active, #reset:active {
+            transform: scale(0.98);
+        }
+        #reset {
+            background-color: #cb0101;
+            color: #fff;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: border-color 0.3s, transform 0.1s;
+        }
+        #reset:hover {
+            background-color: #8b0e0e;
+            transition: all 0.3s;
+        }
+    </style>
 </head>
 <body>
     <section>
@@ -14,34 +167,68 @@
         <form name="formulario" action="">
             <fieldset>
                 <legend><h3>Dados Pessoais</h3></legend>
-                <label for="nome">Nome do Aluno: </label><input type="text" name="nome" placeholder="Insira seu nome"> <br>
-                <label for="data">Nascimento (dd/mm/aaaa): </label><input type="date" name="data"> <br>
-                <label for="pai">Nome do Pai: </label><input type="text" name="pai" placeholder="Insira o nome do Pai"> <br>
-                <label for="mae">Nome da Mãe: </label><input type="text" name="mae" placeholder="Insira o nome da Mãe"> <br>
-                <label for="telefone">Telefone: </label>DDD(<input type="tel" size="1" placeholder="061">) Tel: <input type="tel" name="telefone" placeholder="00000-0000"> Ramal:  <input type="tel" size="1" placeholder="000"> <br>
-                <label for="">E-mail: </label><input type="email" name="email" placeholder="Insira o seu email"> <br>
+                <div class="campo-grupo">
+                    <div class="campo">
+                        <label for="nome">Nome do Aluno: </label>
+                        <input type="text" name="nome" placeholder="Insira seu nome"> <br>
+                    </div>
+                    <div class="campo">
+                        <label for="data">Nascimento (dd/mm/aaaa): </label>
+                        <input type="date" name="data"> <br>
+                    </div>
+                    <div class="campo">
+                        <label for="pai">Nome do Pai: </label>
+                        <input type="text" name="pai" placeholder="Insira o nome do Pai"> <br>
+                    </div>
+                    <div class="campo">
+                        <label for="mae">Nome da Mãe: </label>
+                        <input type="text" name="mae" placeholder="Insira o nome da Mãe"> <br>
+                    </div>
+                    <div class="campo">
+                        <label for="telefone">Telefone: </label>
+                        <input type="text" placeholder="(061)00000-0000">
+                    </div>
+                    <div class="campo">
+                        <label for="">E-mail: </label>
+                        <input type="email" name="email" placeholder="Insira o seu email"> <br>
+                    </div>
+                </div>
             </fieldset>
             <fieldset>
                 <legend><h3>Informações de Matrícula</h3></legend>
-                <label for="serie">Série:</label>
-                <select name="serie" id="serie">
-                    <option value="pre">Pré-Escolar</option>
-                    <option value="fundamental">Ensino Fundamental</option>
-                    <option value="medio">Ensino Médio</option>
-                    <option value="superior">Ensino Superior</option>
-                </select> <br> <br>
-                <label for="turno">Turno: </label> <br>
-                <input type="radio" name="turno" checked> Manhã
-                <input type="radio" name="turno"> Tarde <br> <br>
-                <label for="atividades">Atividades Extracurriculares: </label> <br>
-                <input type="checkbox" name="info" id=""> Informática <br>
-                <input type="checkbox" name="musica" id=""> Música<br>
-                <input type="checkbox" name="ballet" id=""> Ballet <br>
-                <input type="checkbox" name="pintura" id=""> Pintura <br>
-                <input type="checkbox" name="judo" id=""> Judô <br>
-                <input type="checkbox" name="futebol" id=""> Futebol <br>
+                <div style="display: grid;grid-template-columns: 1fr 1fr 1fr; gap:60px;">
+
+                
+                    <div>
+                        <label for="serie">Série:</label>
+                        <select name="serie" id="serie" >
+                            <option value="pre">Pré-Escolar</option>
+                            <option value="fundamental">Ensino Fundamental</option>
+                            <option value="medio">Ensino Médio</option>
+                            <option value="superior">Ensino Superior</option>
+                        </select> <br> <br>
+                    </div>
+                    <div>
+                        
+                        <label for="turno" style="padding-bottom: 8px;">Turno: </label> <br>
+                        <input type="radio" name="turno" checked> Manhã <br>
+                        <input type="radio" name="turno"> Tarde <br> <br>
+                        
+                        
+                    </div>
+                    <div>
+                        
+                        <label for="atividades">Atividades Extracurriculares: </label> <br>
+                        <input type="checkbox" name="info" id=""> Informática <br>
+                        <input type="checkbox" name="musica" id=""> Música<br>
+                        <input type="checkbox" name="ballet" id=""> Ballet <br>
+                        <input type="checkbox" name="pintura" id=""> Pintura <br>
+                        <input type="checkbox" name="judo" id=""> Judô <br>
+                        <input type="checkbox" name="futebol" id=""> Futebol <br>
+                    </div>
+                </div>
             </fieldset> <br>
-            <button>Envia formulário</button> <button>Limpa Campos</button>
+            <button id="submit">Envia formulário</button> <button id="reset">Limpa Campos</button>
         </form>
     </section>
 </body>
