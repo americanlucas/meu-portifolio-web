@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Escola virual</title>
+    <title>Solicitação de Férias</title>
 </head>
 <body>
     <section>
         <div>
-            <h1>Escola Virtual</h1>
-            <h2>Formulário Pré-Matrícula</h2>
+            <h1>Solicitação de Férias</h1>
         </div>
         <form name="formulario" action="">
             <fieldset>
-                <legend><h3>Dados Pessoais</h3></legend>
+                <legend><h3>Dados do colaborador</h3></legend>
                 <div class="campo-grupo">
                     <div class="campo">
-                        <label for="nome">Nome do Aluno: </label>
-                        <input type="text" name="nome" placeholder="Insira seu nome"> <br>
+                        <label for="colaborador">Colaborador: </label>
+                        <input type="text" name="colaborador" id="colaborador" placeholder="Insira seu nome"> <br>
                     </div>
                     <div class="campo">
-                        <label for="data">Nascimento (dd/mm/aaaa): </label>
+                        <label for="data">Data: </label>
                         <input type="date" name="data"> <br>
                     </div>
                     <div class="campo">
@@ -40,19 +39,28 @@
                         <label for="">E-mail: </label>
                         <input type="email" name="email" placeholder="Insira o seu email"> <br>
                     </div>
+                    <div class="campo">
+                        <label for="">CPF: </label>
+                        <input type="text" name="cpf" placeholder="000.000.000-00"> <br>
+                    </div>
+                    <div class="campo">
+                        <label for="">CEP: </label>
+                        <input type="text" name="cep" placeholder="00000-000"> <br>
+                    </div>
                 </div>
             </fieldset>
             <fieldset>
                 <legend><h3>Informações de Matrícula</h3></legend>
-                <div class="campo-informacoes">
+                <div style="display: grid;grid-template-columns: 1fr 1fr 1fr; gap:60px;">
+
+                
                     <div>
                         <label for="serie">Série:</label>
                         <select name="serie" id="serie" >
-                            <option value="1ano">1º ano</option>
-                            <option value="2ano">2º ano</option>
-                            <option value="3ano">3º ano</option>
-                            <option value="4ano">4º ano</option>
-                            <option value="5ano">5º ano</option>
+                            <option value="pre">Pré-Escolar</option>
+                            <option value="fundamental">Ensino Fundamental</option>
+                            <option value="medio">Ensino Médio</option>
+                            <option value="superior">Ensino Superior</option>
                         </select> <br> <br>
                     </div>
                     <div>
@@ -62,10 +70,6 @@
                         <input type="radio" name="turno"> Tarde <br> <br>
                         
                         
-                    </div>
-                    <div id="bloco-telefone-tarde">
-                        <p>Telefone de contato para turno da tarde</p>
-                        <input type="text" name="telefone_tarde" id="telefone_tarde" maxlength="15" placeholder="(61) 99999-9999">
                     </div>
                     <div>
                         
@@ -77,43 +81,10 @@
                         <input type="checkbox" name="judo" id=""> Judô <br>
                         <input type="checkbox" name="futebol" id=""> Futebol <br>
                     </div>
-                    <div id="bloco-segunda-lingua">
-
-                        <p>Segunda Língua</p>
-            
-                        <div class="opcao-lingua">
-                          <input type="radio" id="lingua_ingles" name="segunda_lingua" value="ingles">
-                          <span class="flag">Us</span>
-                          <label for="lingua_ingles">Inglês</label>
-                        </div>
-            
-                    <div class="opcao-lingua">
-                      <input type="radio" id="lingua_espanhol" name="segunda_lingua" value="espanhol">
-                      <span class="flag">ES</span>
-                      <label for="lingua_espanhol">Espanhol</label>
-                    </div>
-            
-            </div>
                 </div>
             </fieldset> <br>
             <button id="submit">Envia formulário</button> <button id="reset">Limpa Campos</button>
         </form>
     </section>
-
-    <script src="script.js"></script>
-    <script>
-        const selectSerie = document.getElementById('serie')
-        const blocoLingua = document.getElementById('bloco-segunda-lingua')
-        const radioLingua = document.querySelectorAll('input[name="segunda-lingua"]')
-
-        selectSerie.addEventListener('change', () => {
-            if(this.value == '5ano') {
-                blocoLingua.style.display = 'grid'
-            } else {
-                blocoLingua.style.display = 'none'
-                radioLingua.forEach(r => r.checked = false)
-            }
-        })
-    </script>
 </body>
 </html>
